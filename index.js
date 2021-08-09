@@ -1,8 +1,11 @@
 import express from "express";
+import dotenv  from "dotenv";
 import mongoose from "mongoose";
 import route from "./router/router.js";
 import cors  from "cors";
 import bodyParser from "body-parser";
+// dotenv.config({path: './config.env'});
+dotenv.config({path:'./config.env'});
 const app = express();
 const PORT =9000;
 
