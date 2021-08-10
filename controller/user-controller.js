@@ -51,39 +51,40 @@ export const addUser = async (req, res) => {
 }
 
 export const signin = async (req, res) => {
-       console.log(req.body);
-       res.json({message:"asesome"})
+    //    console.log(req.body);
+    //    res.json({message:"asesome"})
         console.log("1");
     try {
         console.log("2");
         const { email, password } = req.body;
         if (!email || !password) {
-            console.log("3");
+            
             return res.status(400).json({ error: "plz FIllled the data" })
         }
         console.log("4");
         const userLogin = await user.findOne({ email: email });
-        console.log(userLogin);
+        
         if (userLogin) {
-            console.log("5");
+            
             const isMatch = await bcrypt.compare(password, userLogin.password);
             const token = await userLogin.generateAuthToken();
             console.log(token);
-            console.log("6");
+            console.log(token);
+            
             // res.cookie("jwtoken", token ,{
-            //     expires:new Date(Date.now()+25892000000),
+            //     expires:new Date(Date.now()+3600),
             //     httpOnly:true
             // });
             if (!isMatch) {
-                console.log(7);
-                res.status(400).json({ error: "Invlid Credientials pass" });
+               
+                 res.status(400).json({ message: "Invlid Credientials pass" });
             } else {
-                console.log("8");
-                 res.json({ message: "user SIngin Successfully" });
+                console.log("8 true");
+                res.json({ message: "user SIngin Successfully", token : token , id : userLogin._id});
             }
             }else {
                 console.log("9")
-                res.status(400).json({ error: "Invalid Credientials" })
+                 res.status(400).json({ error: "Invalid Credientials" })
             }
         }catch (err) {
             console.log("10")
