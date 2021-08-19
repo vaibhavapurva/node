@@ -21,7 +21,8 @@ export const getCommentId = async (req, res) => {
     console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     console.log("commentId",PostId)
     try {
-        const User = await comment.findById(PostId);
+        // const User = await comment.findById(PostId);
+        const User = await comment.find({PostId : PostId});
         console.log(User)
         res.json(User);
     } catch (error) {

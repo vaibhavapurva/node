@@ -3,6 +3,7 @@ import post from '../model/post-schema.js';
 
 
 export const getPostUser = async (req, res) => {
+    console.log("getPostUser");
     try {
         let User = await post.find();
         console.log(User);
@@ -30,6 +31,7 @@ export const postUser = async (req, res) => {
 
 
 export const getPostById = async (req, res) => {
+    console.log("get post id ");
     const id = req.params.id;
     try {
         const User = await post.findById(id);
@@ -43,7 +45,7 @@ export const getPostById = async (req, res) => {
 
 export const updatePost = async (req, res) => {
     const Post = req.body;
-
+    console.log("up[date id");
     const editpost = post(Post);
     try {
         await post.updateOne({ _id: req.params.id }, editpost)

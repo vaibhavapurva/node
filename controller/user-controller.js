@@ -27,6 +27,7 @@ export const getUsers = async (req, res) => {
 // }
 
 export const addUser = async (req, res) => {
+    console.log("adduser");
     const { name, email, city, field, password } = req.body;
     if (!name || !email || !city || !field || !password) {
         console.log("all compl");
@@ -50,7 +51,7 @@ export const addUser = async (req, res) => {
 }
 
 export const signin = async (req, res) => {
-    //    console.log(req.body);
+        console.log(req.body);
     //    res.json({message:"asesome"})
     console.log("1");
     try {
@@ -93,6 +94,7 @@ export const signin = async (req, res) => {
 
 
 export const getUserById = async (req, res) => {
+    console.log("getUserByID");
     const id = req.params.id;
     try {
         const User = await user.findById(id);
@@ -105,7 +107,7 @@ export const getUserById = async (req, res) => {
 
 export const editUser = async (req, res) => {
     const User = req.body;
-
+    console.log("editUSer");
     const editUser = user(User);
     try {
         await user.updateOne({ _id: req.params.id }, editUser)
@@ -116,6 +118,7 @@ export const editUser = async (req, res) => {
 }
 
 export const deleteUser = async (req, res) => {
+    console.log("deley")
     try {
         await user.deleteOne({ _id: req.params.id });
         res.json("user delete");
