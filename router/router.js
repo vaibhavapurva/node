@@ -15,7 +15,7 @@ route.post('/addPost', postUser);
 route.get('/getPost', getPostUser);
 
 route.post('/addComment', addUserComment);
-route.get('/getComment', getCommentId);
+route.get('/getComment/:postId', getCommentId);
 route.get('/:id', getUserById);
 route.get('/getpostid/:id', getPostById);
 route.put('/updatepost/:id', updatePost);

@@ -3,7 +3,7 @@ import autoIncrement from 'mongoose-auto-increment';
 
 
 const postSchema =  mongoose.Schema({
-    userId:Number,
+    userId:Object,
     title:String,
     body:String,
 });
